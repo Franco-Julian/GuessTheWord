@@ -4,17 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class GameViewModel: ViewModel() {
-    init {
-        Log.i("GameViewModel","GameViewModel created")
-        resetList()
-        nextWord()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("GameViewModel","GameViewModel destroyed!")
-    }
-
     // The current word
     var word = ""
 
@@ -54,6 +43,11 @@ class GameViewModel: ViewModel() {
         wordList.shuffle()
     }
 
+    init {
+        Log.i("GameViewModel","GameViewModel created")
+        resetList()
+        nextWord()
+    }
 
     /** Methods for buttons presses **/
 
@@ -66,8 +60,6 @@ class GameViewModel: ViewModel() {
         score++
         nextWord()
     }
-
-
     /**
      * Moves to the next word in the list
      */
@@ -76,5 +68,10 @@ class GameViewModel: ViewModel() {
             //Select and remove a word from the list
             word = wordList.removeAt(0)
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("GameViewModel","GameViewModel destroyed!")
     }
 }
