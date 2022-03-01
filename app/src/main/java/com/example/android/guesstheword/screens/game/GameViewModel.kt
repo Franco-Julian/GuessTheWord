@@ -32,8 +32,12 @@ class GameViewModel: ViewModel() {
     val currentTime: LiveData<Long>
         get() = _currentTime
 
-    val currentTimeString = Transformations.map(currentTime) { time ->
-        DateUtils.formatElapsedTime(time)
+    val currentTimeString = Transformations.map(currentTime) { currentTime ->
+        DateUtils.formatElapsedTime(currentTime)
+    }
+
+    val wordHint = Transformations.map(word){ word ->
+        "Current word has ${word.length} letters"
     }
 
     private val timer: CountDownTimer
